@@ -18,7 +18,7 @@ import java.util.Map;
  *
  */
 public class MessageFilter {
-	
+
 	HashMap<String,Integer> nameAndCountOfMessage = new HashMap<String,Integer>();
 	/**
 	 * This is countMessagePerUser method.
@@ -44,47 +44,47 @@ public class MessageFilter {
 
 			if(nameAndCountOfMessage.containsKey(person.name)) continue;
 
-			System.out.println();
-			System.out.println(   person.name + person.message);
+			//System.out.println();
+			//System.out.println(   person.name + person.message);
 
 			realcount=0;
 			int check=0;
 
 
 			for(int j=i+1 ; j<length ; j++) {
-				
+
 				//Find person that the name is same as criteria's name
 				if((person.name).equals((list.get(j)).name)) {
 					MessageLists child =list.get(j);
 					count=0;
 					check++;
-	
+
 					//Check whether the person has same contents to other
 					for(int k=j+1; k<length ; k++) {
 						if((child.name).equals((list.get(k)).name) && compare(child, list.get(k))==0) count++;
 					}
-					
+
 					//If the person is unique compare to others, Add the data
 					if(count==0) {
 						realcount++;
-						System.out.println(child.message);
+						//System.out.println(child.message);
 					}
 				}
 			}
 			// If nothing to have the same name with Criteria, Add  
 			if(check==0) realcount=1;
 
-			
-			System.out.println(person.name + realcount);
+
+			//System.out.println(person.name + realcount);
 			nameAndCountOfMessage.put(person.name, realcount);
 		}
-		
+
 
 		return nameAndCountOfMessage;
 
 	}
-	
-	
+
+
 
 	private int compare(MessageLists person, MessageLists other) {
 

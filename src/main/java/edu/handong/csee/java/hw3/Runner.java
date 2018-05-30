@@ -65,14 +65,14 @@ public class Runner {
 			list = parser.runMessageParser(messages);
 			//System.out.println("2");
 			nameAndCountOfMessage = filter.countMessagePerUser(list);
-			
+
 			List<String> ids = sortByValue(nameAndCountOfMessage);
 			ArrayList<String> linesTowrite = new ArrayList<String>();
 			for(String key : ids) {
 				linesTowrite.add(key + " , " + nameAndCountOfMessage.get(key));
 				System.out.println(key + " , " + nameAndCountOfMessage.get(key));
 			}
-			
+
 			//System.out.println("3");
 			righter.getOutputFile(linesTowrite,outputpath);
 			//System.out.println("4");
@@ -131,7 +131,7 @@ public class Runner {
 		String footer ="\nPlease report issues to 21700097@handong.edu (emails)"; //옵션 설명 후 등장!
 		formatter.printHelp("CLIExample", header, options, footer, true);
 	}
-	
+
 	/**
 	 * This is sortByValue method.
 	 * Put HashMap<String,Integer>, and then it sorts the HashMap in decending order.

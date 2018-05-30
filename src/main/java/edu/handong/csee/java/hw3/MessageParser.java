@@ -1,5 +1,6 @@
 package edu.handong.csee.java.hw3;
 import java.util.ArrayList;
+
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -9,7 +10,7 @@ import java.util.regex.Matcher;
  * It has runMessageParser, renewMessages, parseFile, parseFileOfTXT, parseFileOfCSV methods.
  * It gets ArrayList<String> and it removes unnecessary lines and parses the lines to match MessageLists type.
  * Finally, it saves objects that type is MessageLists to ArrayList<MessageLists> and return it. 
- * @author User
+ * @author Minju
  *
  */
 public class MessageParser {
@@ -29,7 +30,7 @@ public class MessageParser {
 	public ArrayList<MessageLists> runMessageParser(ArrayList<String> messages) {
 
 		messages = renewMessages(messages);
-		
+
 		parseFile(messages);
 
 		return list;
@@ -50,21 +51,26 @@ public class MessageParser {
 
 		while(i>=0) {
 
+
 			String s = messages.get(i);
 			//System.out.println(s);
 
-			Matcher m1 = r1.matcher(s);
-			Matcher m2 = r2.matcher(s);			
-			Matcher m3 = r3.matcher(s);
+			try {
+
+				Matcher m1 = r1.matcher(s);
+				Matcher m2 = r2.matcher(s);			
+				Matcher m3 = r3.matcher(s);
 
 
 
-			if(!m1.find() && !m2.find() && !m3.find()) {
-				//System.out.println("remove"+s);
+				if(!m1.find() && !m2.find() && !m3.find())
+					throw new StringNotMatchException();
+			}catch(StringNotMatchException e) {
+				System.out.println(e.getMessage());
+				System.out.println("remove"+s);
 				messages.remove(i);
-				i--;
-				continue;
 			}
+
 
 			//System.out.println(s);
 			i--;
@@ -142,7 +148,7 @@ public class MessageParser {
 		}
 		time= hour*60 + minute;
 
-		
+
 		//System.out.println(name + message + year + month + day + time);
 		list.add(count,new MessageLists(name,message,year,month, day, time));
 
@@ -162,13 +168,13 @@ public class MessageParser {
 
 		String line = s;
 		String pattern = "";
-		
+
 		int end = s.length();
 		if(s.charAt(end-1)=='"') {
 			pattern ="([0-9]+)\\-([0-9]+)\\-([0-9]+)\\s([0-9]+)\\:([0-9]+)\\:..\\,\\\"(.+)\\\"\\,\\\"(.+)\\\"";
 		}
 		else {
-		pattern ="([0-9]+)\\-([0-9]+)\\-([0-9]+)\\s([0-9]+)\\:([0-9]+)\\:..\\,\\\"(.+)\\\"\\,\\\"(.+)";
+			pattern ="([0-9]+)\\-([0-9]+)\\-([0-9]+)\\s([0-9]+)\\:([0-9]+)\\:..\\,\\\"(.+)\\\"\\,\\\"(.+)";
 		}
 		Pattern r = Pattern.compile(pattern);
 		Matcher m = r.matcher(line);
@@ -183,7 +189,7 @@ public class MessageParser {
 			message = m.group(7);
 		}
 		time=hour*60+minute;
-		
+
 		//System.out.println(name + message + year + month + day + time);
 		list.add(count,new MessageLists(name,message,year,month, day, time));
 

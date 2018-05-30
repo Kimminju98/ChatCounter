@@ -25,7 +25,7 @@ import java.io.*;
  */
 public class DataWriter {
 
-	
+
 	/**
 	 * This is getOutputFile method.
 	 * It makes file based on parameter, filename
@@ -34,18 +34,18 @@ public class DataWriter {
 	 * @param filename , the type if String
 	 */
 	public void getOutputFile(ArrayList<String> linesTowrite,String filename) {
-		
+
 
 		PrintWriter out = null;
 
 		try {
 			out = new PrintWriter(filename);
 			out.println("kako_id, count");
-			
+
 			for(String s : linesTowrite) {
 				out.write(s +"\n");
 			}
-			
+
 		} catch(FileNotFoundException e) {
 			System.out.println("Error opening the file " + filename);
 			System.exit(0);

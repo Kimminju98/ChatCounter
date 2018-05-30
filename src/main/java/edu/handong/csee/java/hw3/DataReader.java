@@ -17,8 +17,8 @@ import java.util.ArrayList;
  *
  */
 public class DataReader {
-	
-	
+
+
 	/**
 	 * This is getData method.
 	 * It has myDir the type of File , files the type of File[] , messages the type of ArrayList<String> type memebers.
@@ -51,7 +51,7 @@ public class DataReader {
 	private File[] getListOfFilesFromDirectory(File dataDir) {
 
 		for(File file : dataDir.listFiles()) {
-			System.out.println(file.getAbsolutePath());
+			//System.out.println(file.getAbsolutePath());
 		}
 
 		return dataDir.listFiles();
@@ -62,22 +62,22 @@ public class DataReader {
 
 		ArrayList<String> messages = new ArrayList<String>();
 		BufferedReader br = null;
-		
+
 		for(File f: file) {
 
 			try {
 				br = new BufferedReader(new InputStreamReader(new FileInputStream(f),"UTF-8"));
 				String line ="";
 
-				System.out.println(f.getName());
-				
-				
+				//System.out.println(f.getName());
+
+
 				while((line=br.readLine())!=null) {
 					//System.out.println(line);
 					messages.add(line);
 				}
-				
-				
+
+
 			}
 			catch(FileNotFoundException e) {
 				e.printStackTrace();
