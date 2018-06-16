@@ -43,6 +43,8 @@ public class DataWriter {
 			out.println("kako_id, count");
 
 			for(String s : linesTowrite) {
+				//System.out.println(1);
+				//System.out.println("1" + s);
 				out.write(s +"\n");
 			}
 

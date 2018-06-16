@@ -1,5 +1,6 @@
 package edu.handong.csee.java.hw3;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -26,6 +27,7 @@ import org.apache.commons.cli.Options;
  */
 public class Runner {
 
+	String numOfThread;
 	String inputpath;
 	String outputpath;
 	boolean help;
@@ -59,8 +61,12 @@ public class Runner {
 			MessageParser parser = new MessageParser();
 			MessageFilter filter = new MessageFilter();
 			DataWriter righter = new DataWriter();
+			
 
-			messages = reader.getData(inputpath);
+			
+			
+			messages = reader.getData(inputpath,numOfThread);
+			
 			//System.out.println("1");
 			list = parser.runMessageParser(messages);
 			//System.out.println("2");
@@ -85,6 +91,7 @@ public class Runner {
 		try {
 			CommandLine cmd = parser.parse(options, args);
 
+			numOfThread = cmd.getOptionValue("c");
 			inputpath = cmd.getOptionValue("i");
 			outputpath = cmd.getOptionValue("o");
 			help = cmd.hasOption("h");
@@ -100,6 +107,13 @@ public class Runner {
 	// Definition Stage
 	private Options createOptions() {
 		Options options = new Options();
+		
+		options.addOption(Option.builder("c").longOpt("numberOfThreadPool")
+				.desc("Set a number of thread pool")
+				.hasArg()
+				.argName("Number of thread pool")
+				.required()
+				.build());
 
 		options.addOption(Option.builder("i").longOpt("inputdir")
 				.desc("Set a directory path that contains input files")
