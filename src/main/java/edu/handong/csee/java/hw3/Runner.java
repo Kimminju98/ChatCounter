@@ -21,7 +21,7 @@ import org.apache.commons.cli.Options;
  * This class run ChatCounter, this class call all the class.
  * You put the options and args, and then it read the contents of all files that contains directory
  * and, it count the number of messages per user. 
- * and then, it save the information to file. 
+ * and then, it save the information to files. 
  * @author MinJu
  *
  */
