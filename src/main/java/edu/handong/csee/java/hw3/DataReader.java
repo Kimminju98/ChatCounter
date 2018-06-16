@@ -29,7 +29,7 @@ public class DataReader {
 	 * First, It gets directory
 	 * Second, It gets list of files from directory
 	 * Third, It reads files and save the contents by line in ArrayList<String> messages.
-	 * When it reads files, it call DataReaderThread.
+	 * When it reads files, it call DataReaderThread
 	 * @param strDir the type of String
 	 * @return ArrayList reference value , messages (That contains all of contents in the files from directory)
 	 */

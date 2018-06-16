@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
  * 
  * This class read file's contents and save it to ArrayList<String> messages
  * 
- * @author Minju
+ * @author MinjuKim
  *
  */
 public class DataReaderThread implements Runnable{
