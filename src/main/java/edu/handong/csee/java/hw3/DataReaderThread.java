@@ -10,22 +10,44 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * This is DataReaderThread class
+ * This class has run,getMessagesFromThread,readFiles methods and File, ArrayList<String> members.
+ * This class implements Runnable
+ * 
+ * This class read file's contents and save it to ArrayList<String> messages
+ * 
+ * @author Minju
+ *
+ */
 public class DataReaderThread implements Runnable{
 
 	File file;
 	ArrayList<String> messages = new ArrayList<String>();
 
+	/**
+	 * This is constructor of DataReaderThread.
+	 * @param file
+	 */
 	public DataReaderThread(File file) {
 		this.file = file;
 
 	}
+	/**
+	 * This is run method.
+	 * It call readFiles method and save message to ArrayList,messages
+	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		messages = readFiles(file);
 
 	}
-	
+	/**
+	 * This is getMessagesFromThread method
+	 * It return messages.
+	 * @return ArrayList<String> messages
+	 */
 	public ArrayList<String> getMessagesFromThread(){
 		return messages;
 	}
