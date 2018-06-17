@@ -1,6 +1,5 @@
 package edu.handong.csee.java.hw3;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -46,6 +45,7 @@ public class Runner {
 
 	private void run(String[] args) {
 		Options options = createOptions();
+		
 
 		if(parseOptions(options, args)){
 			if (help){
@@ -153,7 +153,7 @@ public class Runner {
 	 * @param map
 	 * @return List<String> list
 	 */
-	public List<String> sortByValue(final HashMap<String,Integer> map){
+	public static List<String> sortByValue(final HashMap<String,Integer> map){
 
 		List<String> list = new ArrayList<String>();
 		list.addAll(map.keySet());
